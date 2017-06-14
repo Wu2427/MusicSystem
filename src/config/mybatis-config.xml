@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 实体类,简称 -设置别名 -->
+	<typeAliases>
+		<typeAlias alias="User" type="com.music.entity.User" />
+		<typeAlias alias="Admin" type="com.music.entity.Admin" />
+		<typeAlias alias="Song" type="com.music.entity.Song" />
+		<typeAlias alias="Singer" type="com.music.entity.Singer" /> 
+		<typeAlias alias="Songview" type="com.music.entity.Songview" />
+		<typeAlias alias="UserLists" type="com.music.entity.UserLists" />
+		<typeAlias alias="Lists" type="com.music.entity.Lists" />
+		<typeAlias alias="SingerSong" type="com.music.entity.SingerSong" />
+		<typeAlias alias="SongLists" type="com.music.entity.SongLists" />
+		<typeAlias alias="UserSongLists" type="com.music.entity.UserSongLists" />
+	</typeAliases>
+	<!-- 实体接口映射资源 -->
+	<!--
+		说明：如果xxMapper.xml配置文件放在和xxMapper.java统一目录下，mappers也可以省略，因为org.mybatis.spring.mapper.MapperFactoryBean默认会去查找与xxMapper.java相同目录和名称的xxMapper.xml
+	-->
+	<mappers>
+		<mapper resource="com/music/persistence/userMapper.xml" />
+		<mapper resource="com/music/persistence/adminMapper.xml" />
+		<mapper resource="com/music/persistence/songMapper.xml" />
+		<mapper resource="com/music/persistence/singerMapper.xml" />
+		<mapper resource="com/music/persistence/songviewMapper.xml" />
+		<mapper resource="com/music/persistence/userlistsMapper.xml" />
+		<mapper resource="com/music/persistence/listsMapper.xml" />
+		<mapper resource="com/music/persistence/singersongMapper.xml" />
+		<mapper resource="com/music/persistence/songlistsMapper.xml" />
+		<mapper resource="com/music/persistence/usersonglistsMapper.xml" />
+	</mappers>
+
+</configuration>  

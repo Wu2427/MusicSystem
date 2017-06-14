@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.persistence.SingerMapper">
+
+	<select id="findSort" resultType="Singer">
+		select distinct singer.singername,singerid from singer order by singerid desc
+	</select>
+	
+	<select id="findAll" resultType="Singer">
+		select distinct s.singername,s.singerid from singer s
+	</select>
+
+	<delete id="delete" parameterType="int">
+		delete from singer where
+		singerid=#{singerid}
+	</delete>
+
+	<update id="update" parameterType="Singer">
+		update singer set
+		songname=#{songname},
+		singername=#{singername},
+		singerid=#{singerid}
+		where id=#{id}
+	</update>
+	
+	<select id="findById" parameterType="int" resultType="Singer">
+	select * from singer
+	where id=#{id}
+	</select>
+	
+	<insert id="add" parameterType="Singer">
+	insert into singer (singername,singerid)  values (#{singername},#{singerid})
+	</insert>
+	
+	<update id="addSingerSong" parameterType="Singer">
+		insert into
+		singer(songname,music)
+		values(#{songname},#{music})
+		where singerid=#{singerid}
+	</update>
+	
+	<select id="selectOne" parameterType="int" resultType="Singer">
+	select si.songname,si.songid,si.music from singer si
+	where si.singerid=#{singerid} 
+	</select>
+</mapper>

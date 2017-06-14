@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.persistence.UserSongListsMapper">
+	<select id="findAll" resultType="UserSongLists">
+		select ul.songname,ul.singername,ul.songid from user_lists ul
+		where ul.userlistid=#{0}
+	</select>
+	<delete id="delete" parameterType="int">
+	delete from user_lists ul where ul.songid=#{songid}
+	</delete>
+</mapper>

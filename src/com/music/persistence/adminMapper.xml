@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.persistence.AdminMapper">
+
+	<select id="login" parameterType="String" resultType="Admin">
+		select * from admin
+		where adminname=#{adminname} and adminpwd=#{adminpwd}
+	</select>
+
+	<update id="update" parameterType="Admin">
+		update admin set
+		adminname=#{adminname}, adminpwd=#{adminpwd}
+		where id=#{id}
+	</update>
+
+	<select id="findById" parameterType="int" resultType="Admin">
+		select * from admin
+		where id=#{id}
+	</select>
+
+	<select resultType="Admin" id="findAll" parameterType="String"> 
+		select id,adminname,adminpwd from admin where adminname=#{adminname}
+	</select>
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.persistence.SongMapper">
+
+	<select id="findSort" resultType="Song">
+		select * from song s order by id desc
+	</select>
+	
+	<insert id="collectSong" parameterType="int">
+		insert into user_lists(songid,userlistid,songname,listname,singername)
+		select s.id,l.id,s.songname,l.userlistsname,s.singername from song s,userlists l
+		where s.id=#{0} and l.id=#{1}
+	</insert>
+
+	<select id="findAll" resultType="Song">
+		select s.songname,s.singername,s.id,s.singerid,s.music from song s order by id desc
+	</select>
+
+	<delete id="delete" parameterType="int">
+		delete from song
+		where
+		id=#{id}
+	</delete>
+
+	<insert id="add" parameterType="Song">
+		insert into
+		song(songname,singername,singerid,music)
+		values(#{songname},#{singername},#{singerid},#{music})
+	</insert>
+	
+	<select id="findById" parameterType="int" resultType="Song">
+		select *
+		from song
+		where id=#{id}
+	</select>
+
+	<update id="update" parameterType="Song">
+		update song set
+		songname=#{songname},singername=#{singername},singer_id=#{singer_id},music=#{music}
+		where id=#{id}
+	</update>
+
+	<select id="selectOne" parameterType="int" resultType="Song">
+		select
+		s.songname,s.singername,s.id,s.singerid,s.music
+		from song s
+		where id=#{id}
+	</select>
+</mapper>

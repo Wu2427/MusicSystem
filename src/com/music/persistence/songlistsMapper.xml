@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.persistence.SongListsMapper">
+	<select id="findAll" resultType="SongLists">
+		select sl.songname,sl.singername,sl.listname,sl.listid,sl.songid,sl.music,sl.singerid
+		from song_list sl
+		where sl.listid=#{listid}
+	</select>
+
+	<insert id="add" parameterType="SongLists">
+		insert into song_list(music,singerid,songname,singername,listid)
+		values(#{music},#{singerid},#{songname},#{singername},#{listid})
+	</insert>
+</mapper>
